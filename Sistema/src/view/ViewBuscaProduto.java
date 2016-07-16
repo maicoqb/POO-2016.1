@@ -33,7 +33,8 @@ public class ViewBuscaProduto extends JFrame {
         botaoBuscarProduto.setText("Buscar");
         botaoBuscarProduto.addActionListener(new ControllerBuscarProduto(this));
         
-        // Bla bla
+        
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void exibeResultados(ArrayList<Produto> produtos) {

@@ -17,19 +17,15 @@ import model.Produto;
 public class ControllerAdicionarProduto implements ActionListener {
 
     private final DefaultListModel<Produto> produtos;
-    
-    public ControllerAdicionarProduto(DefaultListModel<Produto> produtos){
-        this.produtos=produtos;
-        
-        
+
+    public ControllerAdicionarProduto(DefaultListModel<Produto> produtos) {
+        this.produtos = produtos;
+
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.produtos.addElement(new Produto());        
+        this.produtos.addElement(new Produto());
     }
-    
-    
-    
-    
+
 }
