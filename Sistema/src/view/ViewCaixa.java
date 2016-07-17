@@ -9,6 +9,7 @@ import controller.ControllerCancelarVenda;
 import controller.ControllerAdicionarProdutoCaixa;
 import controller.ControllerCodigoQuantidadeCaixa;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.UUID;
 import javax.swing.BorderFactory;
@@ -35,7 +36,8 @@ public class ViewCaixa extends JFrame {
     private final JTextField campoValor = new JTextField();
     private final JTextArea campoDescricao = new JTextArea();
     private final JTextField campoSubtotal = new JTextField();
-    
+    private final JTextField campoFuncionario = new JTextField(); // vai mudar
+    private final JTextField campoCaixa = new JTextField(); // vai mudar
     private final JTextField campoTotal = new JTextField();
     
     private final String codigoCaixa;
@@ -53,14 +55,33 @@ public class ViewCaixa extends JFrame {
     }
 
     private void montaJanela() {
+        //PAINEL GERAL - hierarquia dos paineis
+        JPanel painelPrincipal = new JPanel(new BorderLayout());
+        this.setContentPane(painelPrincipal);
+            JPanel blocoDadosProduto = new JPanel(new BorderLayout());
+                painelPrincipal.add(blocoDadosProduto, BorderLayout.NORTH);
+            JPanel painelTabela = new JPanel(new BorderLayout());
+                painelPrincipal.add(painelTabela, BorderLayout.CENTER);
+            JPanel blocoBotoesVenda = new JPanel(new GridLayout(1,2));
+                painelPrincipal.add(blocoBotoesVenda, BorderLayout.SOUTH);
+           
+        
+            //BLOCO DOS DADOS
+           
+                //BLOCO NORTH INPUT
+                JPanel blocoNorthProduto = new JPanel(new GridLayout(2,2));
+                    blocoDadosProduto.add(blocoNorthProduto, BorderLayout.NORTH); //codigo,quantidade,nome,valor ao norte
+                //BLOCO DESCRICAO
+                JPanel blocoDescricao = new JPanel(new BorderLayout());
+                    blocoDadosProduto.add(blocoDescricao, BorderLayout.CENTER); // descricao no meio
 
-        JPanel painelProduto = new JPanel(new BorderLayout());
-        
-        // Bloco do Produto
-        JPanel blocoProduto = new JPanel(new BorderLayout());
-        
-        JPanel blocoNorthProduto = new JPanel(new GridLayout(2,2));
-        
+                //BLOCO SOUTH DESCRICAO
+                JPanel blocoSouthProduto = new JPanel(new GridLayout(1,2));
+                    blocoDadosProduto.add(blocoSouthProduto, BorderLayout.SOUTH); // subtotal e adicionar ao sul
+///////////////////////////////////
+
+
+        //BLOCO CODIGO
         JPanel blocoCodigo = new JPanel(new BorderLayout());
         blocoCodigo.add(new JLabel("Codigo:"), BorderLayout.NORTH);
         campoCodigo.addFocusListener(
@@ -69,6 +90,7 @@ public class ViewCaixa extends JFrame {
         blocoCodigo.add(campoCodigo, BorderLayout.CENTER);
         blocoNorthProduto.add(blocoCodigo);
         
+        //BLOCO QUANTIDADE
         JPanel blocoQuantidade = new JPanel(new BorderLayout());
         blocoQuantidade.add(new JLabel("Quantidade/Peso:"), BorderLayout.NORTH);
         campoQuantidade.setText("1");
@@ -78,30 +100,29 @@ public class ViewCaixa extends JFrame {
         blocoQuantidade.add(campoQuantidade, BorderLayout.CENTER);
         blocoNorthProduto.add(blocoQuantidade);
         
-        // Info do produto
+        //BLOCO NOME
         JPanel blocoNome = new JPanel(new BorderLayout());
         blocoNome.add(new JLabel("Nome:"), BorderLayout.NORTH);
         campoNome.setEditable(false);
         blocoNome.add(campoNome, BorderLayout.CENTER);
         blocoNorthProduto.add(blocoNome);
         
+        //BLOCO VALOR
         JPanel blocoValor = new JPanel(new BorderLayout());
         blocoValor.add(new JLabel("Valor:"), BorderLayout.NORTH);
         campoValor.setEditable(false);
         blocoValor.add(campoValor, BorderLayout.CENTER);
         blocoNorthProduto.add(blocoValor);
         
-        blocoProduto.add(blocoNorthProduto, BorderLayout.NORTH);
-        
-        JPanel blocoDescricao = new JPanel(new BorderLayout());
+        //BLOCO DESCRICAO
         blocoDescricao.add(new JLabel("Descricao:"), BorderLayout.NORTH);
         campoDescricao.setEditable(false);
         campoDescricao.setRows(3);
         blocoDescricao.add(campoDescricao, BorderLayout.CENTER);
-        blocoProduto.add(blocoDescricao, BorderLayout.CENTER);
         
-        JPanel blocoSouthProduto = new JPanel(new GridLayout(1,2));
-
+        
+    
+        //BLOCO SUBTOTAL
         JPanel blocoSubtotal = new JPanel(new BorderLayout());
         blocoSubtotal.add(new JLabel("Sub Total:"), BorderLayout.WEST);
         campoSubtotal.setEditable(false);
@@ -114,20 +135,15 @@ public class ViewCaixa extends JFrame {
                 new ControllerAdicionarProdutoCaixa(
                         campoCodigo, campoQuantidade, produtos, campoTotal, this));
         blocoSouthProduto.add(botaoAdicionar);
-        blocoProduto.add(blocoSouthProduto, BorderLayout.SOUTH);
+       
         
-        painelProduto.add(blocoProduto);
 
         // Painel da Tabela
         JScrollPane painelScrollTabela = new JScrollPane();
         
         // painelScrollTabela.add(tabela);
-        
-        painelScrollTabela.setViewportView(tabela);  
-        
-        JPanel painelTabela = new JPanel(new BorderLayout());
+        painelScrollTabela.setViewportView(tabela);
         painelTabela.setBorder(BorderFactory.createTitledBorder("Produtos"));
-        
         produtos.addColumn("Item");
         produtos.addColumn("Codigo");
         produtos.addColumn("Nome");
@@ -135,30 +151,48 @@ public class ViewCaixa extends JFrame {
         produtos.addColumn("Qtd");
         produtos.addColumn("Unid");
         produtos.addColumn("Sub.Total");
-
         painelTabela.add(painelScrollTabela, BorderLayout.CENTER);
         
-        JPanel blocoTotal = new JPanel(new GridLayout(1,2));
-        blocoTotal.add(new JLabel("Total:"));
-        campoTotal.setEditable(false);
-        blocoTotal.add(campoTotal);
-        painelTabela.add(blocoTotal, BorderLayout.SOUTH);
+        //BLOCO BOTTOM
+        JPanel blocoBottom = new JPanel(new GridLayout(1,3)); //divide rodapé em 3 colunas
+        painelTabela.add(blocoBottom, BorderLayout.SOUTH);
+        blocoBottom.setSize(800, 50);
         
+        //Bloco Total
+        JPanel blocoTotal = new JPanel(new FlowLayout());
+        blocoTotal.add(new JLabel("Total: "));
+        campoTotal.setEditable(false);
+        campoTotal.setColumns(7); //seta largura em colunas do campo
+        blocoTotal.add(campoTotal);
+        blocoBottom.add(blocoTotal,1.0); //coluna 1
+        
+        //Bloco Funcionario
+        JPanel blocoFuncionario = new JPanel(new FlowLayout());
+        blocoFuncionario.add(new JLabel("Funcionario: "));
+        campoFuncionario.setEditable(false);
+        campoFuncionario.setColumns(7);
+        blocoFuncionario.add(campoFuncionario);
+        blocoBottom.add(blocoFuncionario,2.0); //coluna 2
+        
+        
+        
+        //Bloco Caixa
+        JPanel blocoCaixa = new JPanel(new FlowLayout());
+        blocoCaixa.add(new JLabel("Caixa: "));
+        campoCaixa.setEditable(false);
+        campoCaixa.setColumns(7);
+        blocoCaixa.add(campoCaixa);
+        blocoBottom.add(blocoCaixa,3.0); // coluna 3
+
         // Botões da venda
-        JPanel blocoBotes = new JPanel(new GridLayout(1,2));
         JButton botaoCancelar = new JButton("Cancelar Venda");
         botaoCancelar.addActionListener(
                 new ControllerCancelarVenda(this));
-        blocoBotes.add(botaoCancelar);
+        blocoBotoesVenda.add(botaoCancelar);
         JButton botaoFinalizar = new JButton("Finalizar");
-        blocoBotes.add(botaoFinalizar);
+        blocoBotoesVenda.add(botaoFinalizar);
 
-        JPanel painelPrincipal = new JPanel(new BorderLayout());
-        painelPrincipal.add(painelProduto, BorderLayout.NORTH);
-        painelPrincipal.add(painelTabela, BorderLayout.CENTER);
-        painelPrincipal.add(blocoBotes, BorderLayout.SOUTH);
-        this.setContentPane(painelPrincipal);
-        
+    
         // Configurando a janela
         this.pack();
         this.setSize(800, 600);
@@ -177,9 +211,14 @@ public class ViewCaixa extends JFrame {
 
     public void limparVenda() {
         limparInputs();
-        for(int i=0; i<produtos.getRowCount(); i++){
-            produtos.removeRow(i);
+        while(produtos.getRowCount()!=0){ // Não pode usar o getRowCount no for porque a cada rodada ele diminui, logo o for não roda as N vezes que deveria rodar. 
+            //System.out.println(produtos.getRowCount());
+            produtos.removeRow(0); //não sei porque, mas é o unico que funciona direito
         }
+    }
+
+    private void SpringLayout() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -82,12 +82,12 @@ public class ViewBuscaProduto extends JFrame {
         
         JButton botaoBuscar = new JButton("Buscar");
         botaoBuscar.addActionListener(
-                new ControllerBuscarProduto(produtos, listaProduto, campoBuscaCodigo, campoBuscaNome));
+        new ControllerBuscarProduto(produtos, listaProduto, campoBuscaCodigo, campoBuscaNome));
         blocoBuscaBotoes.add(botaoBuscar);
 
         JButton botaoLimpar = new JButton("Limpar");
         botaoLimpar.addActionListener(
-                new ControllerLimparBusca(produtos, listaProduto, campoBuscaCodigo, campoBuscaNome));
+        new ControllerLimparBusca(produtos, listaProduto, campoBuscaCodigo, campoBuscaNome));
         blocoBuscaBotoes.add(botaoLimpar);
 
         blocoBusca.add(blocoBuscaBotoes);

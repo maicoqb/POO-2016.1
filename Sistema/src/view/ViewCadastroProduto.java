@@ -7,7 +7,7 @@ package view;
 
 import controller.ControllerCarregarProduto;
 import controller.ControllerSalvarProduto;
-import controller.ControllerAdicionarProduto;
+import controller.ControllerAdicionarProdutoEstoque;
 import controller.ControllerRemoverProduto;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -63,7 +63,7 @@ public class ViewCadastroProduto extends JFrame {
         painelLista.add(new JScrollPane(listaProduto), BorderLayout.CENTER);
 
         JButton botaoAdicionar = new JButton("Adicionar");
-        botaoAdicionar.addActionListener(new ControllerAdicionarProduto(produtos));
+        botaoAdicionar.addActionListener(new ControllerAdicionarProdutoEstoque(produtos));
 
         painelLista.add(botaoAdicionar, BorderLayout.SOUTH);
 
