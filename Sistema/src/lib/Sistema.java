@@ -3,6 +3,7 @@ package lib;
 import javax.swing.JFrame;
 import view.ViewBuscaProduto;
 import view.ViewCadastroProduto;
+import view.ViewCaixa;
 
 /**
  *
@@ -22,6 +23,8 @@ public class Sistema {
         JFrame telaGerente = new ViewCadastroProduto();
         
         JFrame telaBuscaProduto = new ViewBuscaProduto();
+        
+        JFrame telaCaixa = new ViewCaixa();
 
         // Inicia o Sistema
     }

@@ -96,7 +96,8 @@ public class Estoque {
         
         for (int i = 0; i < feira.length; i++) {
             Produto produto = new Produto();
-            produto.setCodigo(Integer.toString(Math.abs(rand.nextInt()%10000)));
+            //produto.setCodigo(Integer.toString(Math.abs(rand.nextInt()%10000)));
+            produto.setCodigo(Integer.toString(i+1));
             produto.setNome(feira[i]);
             produto.setValor(rand.nextFloat()*10);
             produto.setQuantidade(Math.abs(rand.nextInt()%100));

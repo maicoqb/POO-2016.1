@@ -6,11 +6,8 @@
 package view;
 
 import controller.ControllerLimparBusca;
-import controller.ControllerAdicionarProduto;
 import controller.ControllerBuscarProduto;
 import controller.ControllerCarregarProduto;
-import controller.ControllerRemoverProduto;
-import controller.ControllerSalvarProduto;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -30,10 +27,6 @@ import javax.swing.ListSelectionModel;
 import model.Estoque;
 import model.Produto;
 
-/**
- *
- * @author maico
- */
 public class ViewBuscaProduto extends JFrame {
 
     private final DefaultListModel<Produto> produtos = new DefaultListModel();
