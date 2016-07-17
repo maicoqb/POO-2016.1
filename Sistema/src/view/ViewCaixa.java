@@ -187,7 +187,7 @@ public class ViewCaixa extends JFrame {
         // Botões da venda
         JButton botaoCancelar = new JButton("Cancelar Venda");
         botaoCancelar.addActionListener(
-                new ControllerCancelarVenda(this));
+                new ControllerCancelarVenda(this,produtos));
         blocoBotoesVenda.add(botaoCancelar);
         JButton botaoFinalizar = new JButton("Finalizar");
         blocoBotoesVenda.add(botaoFinalizar);
@@ -212,9 +212,14 @@ public class ViewCaixa extends JFrame {
     public void limparVenda() {
         limparInputs();
         while(produtos.getRowCount()!=0){ // Não pode usar o getRowCount no for porque a cada rodada ele diminui, logo o for não roda as N vezes que deveria rodar. 
+           
+            
             //System.out.println(produtos.getRowCount());
             produtos.removeRow(0); //não sei porque, mas é o unico que funciona direito
         }
+        campoTotal.setText("");
+        
+        
     }
 
     private void SpringLayout() {

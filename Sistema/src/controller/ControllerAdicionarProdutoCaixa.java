@@ -55,13 +55,9 @@ public class ControllerAdicionarProdutoCaixa implements ActionListener {
                         JOptionPane.INFORMATION_MESSAGE);
                 quantidade = produto.getQuantidade();
                 campoQuantidade.setText(Helpers.toMoney(quantidade));
-                
-                
-                
-                
-                
              } else{
-            produtos.addRow(
+                 produto.setQuantidade((float) (produto.getQuantidade()-Helpers.toFloat(campoQuantidade.getText()))); // atualiza estoque
+                 produtos.addRow(
                     new Object[]{
                         produtos.getRowCount()+1,
                         produto.getCodigo(),
@@ -77,7 +73,8 @@ public class ControllerAdicionarProdutoCaixa implements ActionListener {
             float total = Helpers.toFloat(campoTotal.getText());
             total += subtotal;
             campoTotal.setText(Helpers.toMoney(total));
-        }   }
+            }   
+        }
         
         viewCaixa.limparInputs();
     }

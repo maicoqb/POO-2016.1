@@ -7,7 +7,13 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import lib.Helpers;
+import model.Estoque;
+import model.Produto;
 import view.ViewCaixa;
 
 /**
@@ -17,8 +23,9 @@ import view.ViewCaixa;
 public class ControllerCancelarVenda implements ActionListener {
 
     private final ViewCaixa viewCaixa;
-
-    public ControllerCancelarVenda(ViewCaixa viewCaixa) {
+    private final DefaultTableModel produtos;
+    public ControllerCancelarVenda(ViewCaixa viewCaixa,DefaultTableModel produtos) {
+        this.produtos = produtos;
         this.viewCaixa = viewCaixa;
     }
 
@@ -37,8 +44,18 @@ public class ControllerCancelarVenda implements ActionListener {
                 );
         
         if(opcao==0){
+            Produto p;
+            String codigo;
+            float quantidade;
+            int linhas = produtos.getRowCount();
+            for (int i = 0; i < linhas; i++) {
+                codigo = (String) produtos.getValueAt(i,1);
+                quantidade = Helpers.toFloat((String) produtos.getValueAt(i,4));
+                p = Estoque.getInstancia().getProdutoByCodigo(codigo);
+                p.setQuantidade(p.getQuantidade()+quantidade);
+            }
             viewCaixa.limparVenda();
+            
         }
     }
-    
 }
