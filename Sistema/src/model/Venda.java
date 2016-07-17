@@ -1,6 +1,7 @@
 package model;
 
 
+import java.util.ArrayList;
 import model.Produto;
 
 
@@ -9,8 +10,8 @@ import model.Produto;
  * @author User
  */
 public class Venda {
-    private Produto produto;
-    private int quantidade;
+    private ArrayList<Produto> produtos;
     private double valor;
-    
+    private String caixa;
+    private String funcionario;
 }

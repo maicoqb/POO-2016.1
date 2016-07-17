@@ -58,6 +58,8 @@ public class ControllerAdicionarProdutoCaixa implements ActionListener {
                         Helpers.toMoney(subtotal)
                     });
             
+            // TODO remover do estoque aqui
+            
             float total = Helpers.toFloat(campoTotal.getText());
             total += subtotal;
             campoTotal.setText(Helpers.toMoney(total));

@@ -10,6 +10,7 @@ import controller.ControllerAdicionarProdutoCaixa;
 import controller.ControllerCodigoQuantidadeCaixa;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.util.UUID;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -36,9 +37,15 @@ public class ViewCaixa extends JFrame {
     private final JTextField campoSubtotal = new JTextField();
     
     private final JTextField campoTotal = new JTextField();
-        
+    
+    private final String codigoCaixa;
+    private final String codigoFuncionario;
+    
     public ViewCaixa() {
         super("Caixa");
+        
+        codigoCaixa = UUID.randomUUID().toString();
+        codigoFuncionario = UUID.randomUUID().toString();
         
         montaJanela();
 
