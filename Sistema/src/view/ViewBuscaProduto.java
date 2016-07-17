@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.ControllerLimparBusca;
 import controller.ControllerAdicionarProduto;
 import controller.ControllerBuscarProduto;
 import controller.ControllerCarregarProduto;
@@ -26,6 +27,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import model.Estoque;
 import model.Produto;
 
 /**
@@ -49,7 +51,11 @@ public class ViewBuscaProduto extends JFrame {
 
     public ViewBuscaProduto(){
         super("Busca de Produtos");
+        // Pega do estoque quando inicia
+        Estoque.getInstancia().updateListModel(produtos);
+        
         montaJanela();
+        
         this.setVisible(true);
     }
 
@@ -78,14 +84,23 @@ public class ViewBuscaProduto extends JFrame {
         blocoBuscaNome.add(campoBuscaNome, BorderLayout.CENTER);
         blocoBusca.add(blocoBuscaNome);
         
+        
+        JPanel blocoBuscaBotoes = new JPanel(new GridLayout(1,2));
+        
         JButton botaoBuscar = new JButton("Buscar");
-        // botaoBuscar.addActionListener(new ControllerBuscarProduto(produtos));
+        botaoBuscar.addActionListener(
+                new ControllerBuscarProduto(produtos, listaProduto, campoBuscaCodigo, campoBuscaNome));
+        blocoBuscaBotoes.add(botaoBuscar);
 
-        blocoBusca.add(botaoBuscar);
+        JButton botaoLimpar = new JButton("Limpar");
+        botaoLimpar.addActionListener(
+                new ControllerLimparBusca(produtos, listaProduto, campoBuscaCodigo, campoBuscaNome));
+        blocoBuscaBotoes.add(botaoLimpar);
+
+        blocoBusca.add(blocoBuscaBotoes);
         
         painelLista.add(blocoBusca, BorderLayout.NORTH);
-        
-        
+                
         // PAINEL EDICAO PRODUTO
         JPanel painelProduto = new JPanel(new BorderLayout());
 
@@ -94,19 +109,19 @@ public class ViewBuscaProduto extends JFrame {
 
         JPanel blocoCodigo = new JPanel(new BorderLayout());
         blocoCodigo.add(new JLabel("Codigo:"), BorderLayout.NORTH);
-        campoCodigo.setEnabled(false);
+        campoCodigo.setEditable(false);
         blocoCodigo.add(campoCodigo, BorderLayout.CENTER);
         blocoProduto.add(blocoCodigo);
 
         JPanel blocoNome = new JPanel(new BorderLayout());
         blocoNome.add(new JLabel("Nome:"), BorderLayout.NORTH);
-        campoNome.setEnabled(false);
+        campoNome.setEditable(false);
         blocoNome.add(campoNome, BorderLayout.CENTER);
         blocoProduto.add(blocoNome);
 
         JPanel blocoValor = new JPanel(new BorderLayout());
         blocoValor.add(new JLabel("Valor:"), BorderLayout.NORTH);
-        campoValor.setEnabled(false);
+        campoValor.setEditable(false);
         blocoValor.add(campoValor, BorderLayout.CENTER);
         blocoProduto.add(blocoValor);
 
@@ -121,15 +136,14 @@ public class ViewBuscaProduto extends JFrame {
         // Combobox Tipo Quantidade
         JPanel blocoTipoQuantidade = new JPanel(new BorderLayout());
         blocoTipoQuantidade.add(new JLabel("Tipo Quantidade:"), BorderLayout.NORTH);
-        campoTipoQuantidade.setSelectedIndex(1);
-        campoTipoQuantidade.setEnabled(false);
+        campoTipoQuantidade.setEditable(false);
         blocoTipoQuantidade.add(campoTipoQuantidade, BorderLayout.CENTER);
         blocoProduto.add(blocoTipoQuantidade);
 
         // TextArea Descrição
         JPanel blocoDescricao = new JPanel(new BorderLayout());
         blocoDescricao.add(new JLabel("Descricão:"), BorderLayout.NORTH);
-        campoDescricao.setEnabled(false);
+        campoDescricao.setEditable(false);
         blocoDescricao.add(campoDescricao, BorderLayout.CENTER);
         painelProduto.add(blocoDescricao, BorderLayout.CENTER);
         painelProduto.add(blocoProduto, BorderLayout.NORTH);

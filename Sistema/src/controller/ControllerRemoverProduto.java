@@ -30,6 +30,7 @@ public class ControllerRemoverProduto implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Produto produto = lista.getSelectedValue();
         produtos.removeElement(produto);
+        Estoque.getInstancia().removerProduto(produto);
     }
    
     

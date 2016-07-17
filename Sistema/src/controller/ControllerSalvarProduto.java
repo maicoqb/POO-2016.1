@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import model.Estoque;
 import model.Produto;
 
 /**
@@ -57,6 +58,8 @@ public class ControllerSalvarProduto implements ActionListener {
             produto.setQuantidade(Integer.parseInt(campoQuantidade.getText()));
             produto.setDescricao(campoDescricao.getText());
             produto.setTipoQuantidade(campoTipoQuantidade.getSelectedItem().toString());
+            
+            Estoque.getInstancia().salvaProduto(produto);
         }
         
         lista.repaint();

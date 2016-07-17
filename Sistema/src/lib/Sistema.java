@@ -2,7 +2,7 @@ package lib;
 
 import javax.swing.JFrame;
 import view.ViewBuscaProduto;
-import view.ViewGerente;
+import view.ViewCadastroProduto;
 
 /**
  *
@@ -19,9 +19,9 @@ public class Sistema {
         // Iniciar 3 telas de caixa
         // Iniciar 1 tela de busca de produto
         // JFrame buscaDeProduto = new ViewBuscaProduto();
-        JFrame telaGerente = new ViewGerente();
+        JFrame telaGerente = new ViewCadastroProduto();
         
-        // JFrame telaBuscaProduto = new ViewBuscaProduto();
+        JFrame telaBuscaProduto = new ViewBuscaProduto();
 
         // Inicia o Sistema
     }

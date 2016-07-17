@@ -12,14 +12,18 @@ import javax.swing.JList;
 import javax.swing.JTextField;
 import model.Produto;
 
-public class ControllerBuscarProduto implements ActionListener {
+/**
+ *
+ * @author maico
+ */
+public class ControllerLimparBusca implements ActionListener {
 
     private final DefaultListModel<Produto> produtos;
     private final JList<Produto> listaProduto;
     private final JTextField campoCodigo;
     private final JTextField campoNome;
 
-    public ControllerBuscarProduto(
+    public ControllerLimparBusca(
             DefaultListModel<Produto> produtos,
             JList<Produto> listaProduto,
             JTextField campoBuscaCodigo,
@@ -30,23 +34,11 @@ public class ControllerBuscarProduto implements ActionListener {
         this.campoNome = campoBuscaNome;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
-        DefaultListModel<Produto> produtos = new DefaultListModel<>();
-        String nome = campoNome.getText().toLowerCase();
-        String codigo = campoCodigo.getText().toLowerCase();
-        
-        Produto produto;
-        for(int i=0; i<this.produtos.size(); i++){
-        // for (Produto produto : (Produto[])this.produtos.toArray()) {
-            produto = this.produtos.get(i);
-            
-            if (produto.getNome().toLowerCase().contains(nome)
-                    && produto.getCodigo().toLowerCase().contains(codigo)) {
-                produtos.addElement(produto);
-            }
-        }
-        
+        campoNome.setText("");
+        campoCodigo.setText("");
         listaProduto.setModel(produtos);
     }
-
+    
 }

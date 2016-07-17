@@ -1,22 +1,22 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Random;
 import javax.swing.DefaultListModel;
-import javax.swing.event.ListDataEvent;
-import javax.swing.event.ListDataListener;
 
-/**
- *
- * @author User
- */
-public class Estoque implements ListDataListener{
+public class Estoque {
 
     private static Estoque instancia;
 
     private ArrayList<Produto> produtos;
+    private HashSet<DefaultListModel> listModels;
 
     private Estoque() {
-        produtos = new ArrayList<>();   
+        produtos = new ArrayList<>();
+        listModels = new HashSet<>();
+
+        seed();
     }
 
     public static Estoque getInstancia() {
@@ -28,13 +28,13 @@ public class Estoque implements ListDataListener{
 
     public ArrayList<Produto> buscaProdutos(String nome) {
         ArrayList<Produto> retorno = new ArrayList<>();
-        
-        for(Produto produto : produtos){
-            if(produto.getNome().equals(nome)){
+
+        for (Produto produto : produtos) {
+            if (produto.getNome().equals(nome)) {
                 retorno.add(produto);
             }
         }
-        
+
         return retorno;
     }
 
@@ -48,31 +48,62 @@ public class Estoque implements ListDataListener{
     }
 
     public void updateListModel(DefaultListModel<Produto> produtosListModel) {
-        // Criar o listmodel dentro do estoque e instancia única
-        // Passar essa instancia para as views
-        // Deixar essa lógica encapsulada no estoque
-        
-        for(Produto produto : this.produtos){
+        produtosListModel.removeAllElements();
+        // Adiciono os produtos do estoque no list model
+        for (Produto produto : this.produtos) {
             produtosListModel.addElement(produto);
         }
+
+        this.listModels.add(produtosListModel);
+    }
+
+    public void removerProduto(Produto produto) {
+        this.produtos.remove(produto);
+        for (DefaultListModel listModel : this.listModels) {
+            listModel.removeElement(produto);
+        }
+    }
+
+    public void salvaProduto(Produto produto) {
+        int i = this.produtos.indexOf(produto);
+        // Se o produto não existir, adiciona o produto na lista
+        if (i < 0) {
+            this.produtos.add(produto);
+        } // Se não, só altera o produto
+        else {
+            this.produtos.set(i, produto);
+        }
+
+        for (DefaultListModel listModel : this.listModels) {
+            int j = listModel.indexOf(produto);
+            // Se o produto não existir, adiciona o produto na lista
+            if (j < 0) {
+                listModel.addElement(produto);
+            } // Se não, só altera o produto
+            else {
+                listModel.set(j, produto);
+            }
+        }
+    }
+
+    public void seed() {
+        String[] feira = {
+            "Pêra","Uva","Maçã","Banana","Laranja","Limão",
+            "Abacate","Abacaxi","Tangerina","Melancia","Cereja"
+        };
         
-        // Altera o estoque quando muda
-        produtosListModel.addListDataListener(this);
+        Random rand = new Random();
+        
+        for (int i = 0; i < feira.length; i++) {
+            Produto produto = new Produto();
+            produto.setCodigo(Integer.toString(Math.abs(rand.nextInt()%10000)));
+            produto.setNome(feira[i]);
+            produto.setValor(rand.nextFloat()*10);
+            produto.setQuantidade(Math.abs(rand.nextInt()%100));
+            produto.setTipoQuantidade(Produto.TIPO_QUILO);
+            produto.setDescricao("");
+            
+            this.produtos.add(produto);
+        }
     }
-
-    @Override
-    public void intervalAdded(ListDataEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void intervalRemoved(ListDataEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void contentsChanged(ListDataEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

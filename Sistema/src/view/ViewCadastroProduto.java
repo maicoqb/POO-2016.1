@@ -35,7 +35,7 @@ import model.Produto;
  *
  * @author maico
  */
-public class ViewGerente extends JFrame {
+public class ViewCadastroProduto extends JFrame {
 
     private final DefaultListModel<Produto> produtos = new DefaultListModel();
     private final JList<Produto> listaProduto = new JList(produtos);
@@ -47,7 +47,7 @@ public class ViewGerente extends JFrame {
     private final JTextField campoCodigo = new JTextField();
     private final JComboBox campoTipoQuantidade = new JComboBox(Produto.getTipoQuantidadeArray());
 
-    public ViewGerente() {
+    public ViewCadastroProduto() {
         super("Gerenciamento de produtos");
         // Pega do estoque quando inicia
         Estoque.getInstancia().updateListModel(produtos);
@@ -83,25 +83,21 @@ public class ViewGerente extends JFrame {
 
         JPanel blocoCodigo = new JPanel(new BorderLayout());
         blocoCodigo.add(new JLabel("Codigo:"), BorderLayout.NORTH);
-        campoCodigo.setEnabled(false);
         blocoCodigo.add(campoCodigo, BorderLayout.CENTER);
         blocoProduto.add(blocoCodigo);
 
         JPanel blocoNome = new JPanel(new BorderLayout());
         blocoNome.add(new JLabel("Nome:"), BorderLayout.NORTH);
-        campoNome.setEnabled(false);
         blocoNome.add(campoNome, BorderLayout.CENTER);
         blocoProduto.add(blocoNome);
 
         JPanel blocoValor = new JPanel(new BorderLayout());
         blocoValor.add(new JLabel("Valor:"), BorderLayout.NORTH);
-        campoValor.setEnabled(false);
         blocoValor.add(campoValor, BorderLayout.CENTER);
         blocoProduto.add(blocoValor);
 
         JPanel blocoQuantidade = new JPanel(new BorderLayout());
         blocoQuantidade.add(new JLabel("Quantidade:"), BorderLayout.NORTH);
-        campoQuantidade.setEnabled(false);
         blocoQuantidade.add(campoQuantidade, BorderLayout.CENTER);
         blocoProduto.add(blocoQuantidade);
         
@@ -109,14 +105,12 @@ public class ViewGerente extends JFrame {
         JPanel blocoTipoQuantidade = new JPanel(new BorderLayout());
         blocoTipoQuantidade.add(new JLabel("Tipo Quantidade:"), BorderLayout.NORTH);
         campoTipoQuantidade.setSelectedIndex(1);
-        campoTipoQuantidade.setEnabled(false);
         blocoTipoQuantidade.add(campoTipoQuantidade, BorderLayout.CENTER);
         blocoProduto.add(blocoTipoQuantidade);
 
         // TextArea Descrição
         JPanel blocoDescricao = new JPanel(new BorderLayout());
         blocoDescricao.add(new JLabel("Descricão:"), BorderLayout.NORTH);
-        campoDescricao.setEnabled(false);
         blocoDescricao.add(campoDescricao, BorderLayout.CENTER);
         painelProduto.add(blocoDescricao, BorderLayout.CENTER);
         painelProduto.add(blocoProduto, BorderLayout.NORTH);

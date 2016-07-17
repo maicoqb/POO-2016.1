@@ -52,22 +52,11 @@ public class ControllerCarregarProduto implements ListSelectionListener {
         // Verifica se realmente tem um produto selecionado 
         if(produto != null){
             campoCodigo.setText(produto.getCodigo());
-            campoCodigo.setEnabled(true);
-            
             campoNome.setText(produto.getNome());
-            campoNome.setEnabled(true);
-            
             campoValor.setText(Float.toString(produto.getValor()).replace('.', ','));
-            campoValor.setEnabled(true);
-            
             campoQuantidade.setText(Integer.toString(produto.getQuantidade()));
-            campoQuantidade.setEnabled(true);
-            
             campoDescricao.setText(produto.getDescricao());
-            campoDescricao.setEnabled(true);
-            
             campoTipoQuantidade.setSelectedItem(produto.getTipoQuantidade());
-            campoTipoQuantidade.setEnabled(true);
             
         }
         lista.repaint();
