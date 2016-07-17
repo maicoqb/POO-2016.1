@@ -39,9 +39,10 @@ public class ViewCaixa extends JFrame {
     private final JTextField campoFuncionario = new JTextField(); // vai mudar
     private final JTextField campoCaixa = new JTextField(); // vai mudar
     private final JTextField campoTotal = new JTextField();
-    
+    private final JTextField campoVenda = new JTextField();
     private final String codigoCaixa;
     private final String codigoFuncionario;
+    
     
     public ViewCaixa() {
         super("Caixa");
@@ -154,7 +155,7 @@ public class ViewCaixa extends JFrame {
         painelTabela.add(painelScrollTabela, BorderLayout.CENTER);
         
         //BLOCO BOTTOM
-        JPanel blocoBottom = new JPanel(new GridLayout(1,3)); //divide rodapé em 3 colunas
+        JPanel blocoBottom = new JPanel(new GridLayout()); //divide rodapé em 3 colunas
         painelTabela.add(blocoBottom, BorderLayout.SOUTH);
         blocoBottom.setSize(800, 50);
         
@@ -183,7 +184,17 @@ public class ViewCaixa extends JFrame {
         campoCaixa.setColumns(7);
         blocoCaixa.add(campoCaixa);
         blocoBottom.add(blocoCaixa,3.0); // coluna 3
-
+        
+        //BLOCO VENDA
+        
+        JPanel blocoVenda = new JPanel(new FlowLayout());
+        blocoVenda.add(new JLabel("ID Venda: "));
+        campoVenda.setEditable(false);
+        campoVenda.setColumns(7);
+        blocoVenda.add(campoVenda);
+        blocoBottom.add(blocoVenda,4.0); // coluna 4
+        campoVenda.setText(UUID.randomUUID().toString());
+        
         // Botões da venda
         JButton botaoCancelar = new JButton("Cancelar Venda");
         botaoCancelar.addActionListener(
@@ -191,7 +202,7 @@ public class ViewCaixa extends JFrame {
         blocoBotoesVenda.add(botaoCancelar);
         JButton botaoFinalizar = new JButton("Finalizar");
         blocoBotoesVenda.add(botaoFinalizar);
-
+        
     
         // Configurando a janela
         this.pack();
