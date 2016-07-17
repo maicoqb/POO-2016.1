@@ -28,4 +28,15 @@ public class Helpers {
         System.out.println(frase);
         return teclado.nextDouble();
     }
+
+    public static String toMoney(float valor) {
+        return Float.toString(valor).replace('.',',');
+    }
+
+    public static float toFloat(String text) {
+        if(text.length()==0){
+            return 0;
+        }
+        return Float.parseFloat(text.replace(',', '.'));
+    }
 }

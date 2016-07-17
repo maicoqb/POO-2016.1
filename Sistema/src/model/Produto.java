@@ -19,7 +19,7 @@ public class Produto {
     private String codigo;
     private String nome;
     private float valor;
-    private int quantidade;
+    private float quantidade;
     private String descricao;
     private String tipoQuantidade;
 
@@ -43,11 +43,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public int getQuantidade() {
+    public float getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(float quantidade) {
         this.quantidade = quantidade;
     }
 

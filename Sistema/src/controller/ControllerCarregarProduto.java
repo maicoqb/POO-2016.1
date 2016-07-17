@@ -54,7 +54,7 @@ public class ControllerCarregarProduto implements ListSelectionListener {
             campoCodigo.setText(produto.getCodigo());
             campoNome.setText(produto.getNome());
             campoValor.setText(Float.toString(produto.getValor()).replace('.', ','));
-            campoQuantidade.setText(Integer.toString(produto.getQuantidade()));
+            campoQuantidade.setText(Float.toString(produto.getQuantidade()));
             campoDescricao.setText(produto.getDescricao());
             campoTipoQuantidade.setSelectedItem(produto.getTipoQuantidade());
             

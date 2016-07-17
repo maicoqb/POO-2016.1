@@ -88,23 +88,34 @@ public class Estoque {
 
     public void seed() {
         String[] feira = {
-            "Pêra","Uva","Maçã","Banana","Laranja","Limão",
-            "Abacate","Abacaxi","Tangerina","Melancia","Cereja"
+            "Pêra", "Uva", "Maçã", "Banana", "Laranja", "Limão",
+            "Abacate", "Abacaxi", "Tangerina", "Melancia", "Cereja"
         };
-        
+
         Random rand = new Random();
-        
+
         for (int i = 0; i < feira.length; i++) {
             Produto produto = new Produto();
             //produto.setCodigo(Integer.toString(Math.abs(rand.nextInt()%10000)));
-            produto.setCodigo(Integer.toString(i+1));
+            produto.setCodigo(Integer.toString(i + 1));
             produto.setNome(feira[i]);
-            produto.setValor(rand.nextFloat()*10);
-            produto.setQuantidade(Math.abs(rand.nextInt()%100));
+            produto.setValor(rand.nextFloat() * 10);
+            produto.setQuantidade((float) Math.abs(rand.nextInt() % 100));
             produto.setTipoQuantidade(Produto.TIPO_QUILO);
             produto.setDescricao("");
-            
+
             this.produtos.add(produto);
         }
+    }
+
+    public Produto getProdutoByCodigo(String codigo) {
+        
+        for (Produto produto : produtos) {
+            if (produto.getCodigo().equals(codigo)) {
+                return produto;
+            }
+        }
+
+        return null;
     }
 }

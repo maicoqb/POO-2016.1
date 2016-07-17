@@ -36,7 +36,7 @@ public class ControllerSalvarProduto implements ActionListener {
             JTextField campoQuantidade,
             JTextArea campoDescricao,
             JComboBox campoTipoQuantidade) {
-        
+
         this.lista = listaProduto;
         this.campoCodigo = campoCodigo;
         this.campoNome = campoNome;
@@ -44,20 +44,28 @@ public class ControllerSalvarProduto implements ActionListener {
         this.campoQuantidade = campoQuantidade;
         this.campoDescricao = campoDescricao;
         this.campoTipoQuantidade = campoTipoQuantidade;
-        
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Produto produto = lista.getSelectedValue();
         // Verifica se realmente tem um produto selecionado 
-        if(produto != null){
+        if (produto != null) {
             produto.setCodigo(campoCodigo.getText());
             produto.setNome(campoNome.getText());
             produto.setValor(Float.parseFloat(campoValor.getText().replace(',', '.')));
-            produto.setQuantidade(Integer.parseInt(campoQuantidade.getText()));
             produto.setDescricao(campoDescricao.getText());
             produto.setTipoQuantidade(campoTipoQuantidade.getSelectedItem().toString());
+
+            // Se for Kg, a quantidade pode ser float
+            if (campoTipoQuantidade.getSelectedItem().equals(Produto.TIPO_QUILO)) {
+                produto.setQuantidade(Float.parseFloat(campoQuantidade.getText().replace(',', '.')));
+            } 
+            // Se não, pra unidade a quantidade tem que ser inteiro
+            else {
+                produto.setQuantidade((int) Float.parseFloat(campoQuantidade.getText().replace(',', '.')));
+            }
             
             Estoque.getInstancia().salvaProduto(produto);
         }
