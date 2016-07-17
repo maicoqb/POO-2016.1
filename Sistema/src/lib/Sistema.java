@@ -26,6 +26,7 @@ public class Sistema {
         
         JFrame telaCaixa = new ViewCaixa();
 
+        JFrame telaCaixa2 = new ViewCaixa();
         // Inicia o Sistema
     }
 

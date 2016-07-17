@@ -55,16 +55,16 @@ public class ControllerCodigoQuantidadeCaixa implements FocusListener {
             if (produto.getTipoQuantidade().equals(Produto.TIPO_UNIDADE)) {
                 quantidade = (int) quantidade;
             }
-
+            
             if (quantidade > produto.getQuantidade()) {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Não há quantidade suficiente do produto.",
-                        "Quantidade Insuficiente",
-                        JOptionPane.INFORMATION_MESSAGE);
-                quantidade = produto.getQuantidade();
-                campoQuantidade.setText(Helpers.toMoney(quantidade));
-
+//                JOptionPane.showMessageDialog(
+//                        null,
+//                        "Não há quantidade suficiente do produto.",
+//                        "Quantidade Insuficiente",
+//                        JOptionPane.INFORMATION_MESSAGE);
+//                quantidade = produto.getQuantidade();
+//                campoQuantidade.setText(Helpers.toMoney(quantidade));
+//                campoCodigo.setText(produto.getCodigo());
             } else {
                 campoQuantidade.setText(Helpers.toMoney(quantidade));
                 campoNome.setText(produto.getNome());
@@ -72,7 +72,7 @@ public class ControllerCodigoQuantidadeCaixa implements FocusListener {
                 campoDescricao.setText(produto.getDescricao());
                 campoSubtotal.setText(Helpers.toMoney(quantidade * produto.getValor()));
             }
-
+               
         }
     }
 

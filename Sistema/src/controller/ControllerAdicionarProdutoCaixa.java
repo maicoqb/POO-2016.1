@@ -8,6 +8,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import lib.Helpers;
@@ -46,7 +47,20 @@ public class ControllerAdicionarProdutoCaixa implements ActionListener {
         if (produto != null) {
             float quantidade = Helpers.toFloat(campoQuantidade.getText());
             float subtotal = quantidade*produto.getValor();
-            
+             if (quantidade > produto.getQuantidade()) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Não há quantidade suficiente do produto.",
+                        "Quantidade Insuficiente",
+                        JOptionPane.INFORMATION_MESSAGE);
+                quantidade = produto.getQuantidade();
+                campoQuantidade.setText(Helpers.toMoney(quantidade));
+                
+                
+                
+                
+                
+             } else{
             produtos.addRow(
                     new Object[]{
                         produtos.getRowCount()+1,
@@ -57,13 +71,13 @@ public class ControllerAdicionarProdutoCaixa implements ActionListener {
                         produto.getTipoQuantidade(),
                         Helpers.toMoney(subtotal)
                     });
-            
+             
             // TODO remover do estoque aqui
             
             float total = Helpers.toFloat(campoTotal.getText());
             total += subtotal;
             campoTotal.setText(Helpers.toMoney(total));
-        }
+        }   }
         
         viewCaixa.limparInputs();
     }
