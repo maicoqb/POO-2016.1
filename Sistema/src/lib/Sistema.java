@@ -21,7 +21,7 @@ public class Sistema {
         // JFrame buscaDeProduto = new ViewBuscaProduto();
         JFrame telaGerente = new ViewGerente();
         
-        JFrame telaBuscaProduto = new ViewBuscaProduto();
+        // JFrame telaBuscaProduto = new ViewBuscaProduto();
 
         // Inicia o Sistema
     }

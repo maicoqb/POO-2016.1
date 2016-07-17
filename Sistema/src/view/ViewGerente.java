@@ -28,6 +28,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import model.Estoque;
 import model.Produto;
 
 /**
@@ -48,6 +49,9 @@ public class ViewGerente extends JFrame {
 
     public ViewGerente() {
         super("Gerenciamento de produtos");
+        // Pega do estoque quando inicia
+        Estoque.getInstancia().updateListModel(produtos);
+        
         montaJanela();
 
         this.setVisible(true);
@@ -61,7 +65,7 @@ public class ViewGerente extends JFrame {
         listaProduto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         listaProduto.addListSelectionListener(
                 new ControllerCarregarProduto(listaProduto, campoCodigo,
-                        campoNome, campoValor, campoQuantidade,
+                        campoNome, campoValor, campoQuantidade, 
                         campoDescricao, campoTipoQuantidade));
 
         painelLista.add(new JScrollPane(listaProduto), BorderLayout.CENTER);
@@ -100,7 +104,7 @@ public class ViewGerente extends JFrame {
         campoQuantidade.setEnabled(false);
         blocoQuantidade.add(campoQuantidade, BorderLayout.CENTER);
         blocoProduto.add(blocoQuantidade);
-
+        
         // Combobox Tipo Quantidade
         JPanel blocoTipoQuantidade = new JPanel(new BorderLayout());
         blocoTipoQuantidade.add(new JLabel("Tipo Quantidade:"), BorderLayout.NORTH);
@@ -124,7 +128,7 @@ public class ViewGerente extends JFrame {
         JButton botaoSalvar = new JButton("Salvar");
         botaoSalvar.addActionListener(
                 new ControllerSalvarProduto(listaProduto, campoCodigo,
-                        campoNome, campoValor, campoQuantidade,
+                        campoNome, campoValor, campoQuantidade, 
                         campoDescricao, campoTipoQuantidade));
 
         JPanel painelBotoesProduto = new JPanel(new GridLayout(1, 2));
