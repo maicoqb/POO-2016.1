@@ -7,7 +7,6 @@ package controller;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import lib.Helpers;
@@ -55,7 +54,7 @@ public class ControllerCodigoQuantidadeCaixa implements FocusListener {
             if (produto.getTipoQuantidade().equals(Produto.TIPO_UNIDADE)) {
                 quantidade = (int) quantidade;
             }
-            
+
             if (quantidade > produto.getQuantidade()) {
 //                JOptionPane.showMessageDialog(
 //                        null,
@@ -72,7 +71,7 @@ public class ControllerCodigoQuantidadeCaixa implements FocusListener {
                 campoDescricao.setText(produto.getDescricao());
                 campoSubtotal.setText(Helpers.toMoney(quantidade * produto.getValor()));
             }
-               
+
         }
     }
 

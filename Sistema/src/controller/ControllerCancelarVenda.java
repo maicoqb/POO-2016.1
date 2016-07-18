@@ -7,9 +7,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import lib.Helpers;
 import model.Estoque;
@@ -48,10 +46,14 @@ public class ControllerCancelarVenda implements ActionListener {
             String codigo;
             float quantidade;
             int linhas = produtos.getRowCount();
+            
             for (int i = 0; i < linhas; i++) {
                 codigo = (String) produtos.getValueAt(i,1);
                 quantidade = Helpers.toFloat((String) produtos.getValueAt(i,4));
                 p = Estoque.getInstancia().getProdutoByCodigo(codigo);
+                
+                // Quando cancelar a venda tem que adicionar de 
+                // novo o produto no estoque
                 p.setQuantidade(p.getQuantidade()+quantidade);
             }
             viewCaixa.limparVenda();

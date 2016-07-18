@@ -7,7 +7,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -46,8 +45,17 @@ public class ControllerAdicionarProdutoCaixa implements ActionListener {
         Produto produto = Estoque.getInstancia().getProdutoByCodigo(campoCodigo.getText());
         if (produto != null) {
             float quantidade = Helpers.toFloat(campoQuantidade.getText());
-            float subtotal = quantidade*produto.getValor();
-             if (quantidade > produto.getQuantidade()) {
+            float subtotal = quantidade * produto.getValor();
+            
+            if (quantidade <= 0){
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Informe uma quantidade válida do produto.",
+                        "Quantidade Inválida",
+                        JOptionPane.INFORMATION_MESSAGE);
+                return;
+            } else
+            if (quantidade > produto.getQuantidade()) {
                 JOptionPane.showMessageDialog(
                         null,
                         "Não há quantidade suficiente do produto.",
@@ -55,27 +63,27 @@ public class ControllerAdicionarProdutoCaixa implements ActionListener {
                         JOptionPane.INFORMATION_MESSAGE);
                 quantidade = produto.getQuantidade();
                 campoQuantidade.setText(Helpers.toMoney(quantidade));
-             } else{
-                 produto.setQuantidade((float) (produto.getQuantidade()-Helpers.toFloat(campoQuantidade.getText()))); // atualiza estoque
-                 produtos.addRow(
-                    new Object[]{
-                        produtos.getRowCount()+1,
-                        produto.getCodigo(),
-                        produto.getNome(),
-                        Helpers.toMoney(produto.getValor()),
-                        Helpers.toMoney(quantidade),
-                        produto.getTipoQuantidade(),
-                        Helpers.toMoney(subtotal)
-                    });
-             
-            // TODO remover do estoque aqui
-            
-            float total = Helpers.toFloat(campoTotal.getText());
-            total += subtotal;
-            campoTotal.setText(Helpers.toMoney(total));
-            }   
+                return;
+            } else {
+                produto.setQuantidade(produto.getQuantidade() - quantidade); // atualiza estoque
+                produtos.addRow(
+                        new Object[]{
+                            produtos.getRowCount() + 1,
+                            produto.getCodigo(),
+                            produto.getNome(),
+                            Helpers.toMoney(produto.getValor()),
+                            Helpers.toMoney(quantidade),
+                            produto.getTipoQuantidade(),
+                            Helpers.toMoney(subtotal)
+                        });
+
+                // TODO remover do estoque aqui
+                float total = Helpers.toFloat(campoTotal.getText());
+                total += subtotal;
+                campoTotal.setText(Helpers.toMoney(total));
+            }
         }
-        
+
         viewCaixa.limparInputs();
     }
 

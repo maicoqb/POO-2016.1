@@ -23,6 +23,8 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import model.Caixa;
+import model.Funcionario;
 
 public class ViewCaixa extends JFrame {
 
@@ -43,20 +45,23 @@ public class ViewCaixa extends JFrame {
     private final JTextField campoVenda = new JTextField();
     private final JTextField campoData = new JTextField();
 
-    private final String caixa;
-    private final String funcionario;
-    private final String venda;
+    private final Caixa caixa;
+    private final Funcionario funcionario;
 
     public ViewCaixa() {
         super("Caixa");
 
-        caixa = UUID.randomUUID().toString().substring(1, 8);
-        funcionario = UUID.randomUUID().toString().substring(1, 8);
-        venda = UUID.randomUUID().toString().substring(1, 8);
+        caixa = new Caixa();
+        funcionario = new Funcionario();
 
         montaJanela();
 
+        // Configurando a janela
         this.setVisible(true);
+        this.pack();
+        this.setSize(800, 600);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void montaJanela() {
@@ -168,7 +173,7 @@ public class ViewCaixa extends JFrame {
         blocoFuncionario.add(new JLabel("Funcionario: "));
         campoFuncionario.setEditable(false);
         campoFuncionario.setColumns(7);
-        campoFuncionario.setText(funcionario);
+        campoFuncionario.setText(funcionario.toString());
         blocoFuncionario.add(campoFuncionario);
         blocoBottom.add(blocoFuncionario); //coluna 2
 
@@ -177,34 +182,22 @@ public class ViewCaixa extends JFrame {
         blocoCaixa.add(new JLabel("Caixa: "));
         campoCaixa.setEditable(false);
         campoCaixa.setColumns(7);
-        campoCaixa.setText(caixa);
+        campoCaixa.setText(caixa.toString());
         blocoCaixa.add(campoCaixa);
         blocoBottom.add(blocoCaixa); // coluna 3
 
-        //BLOCO VENDA
-        JPanel blocoVenda = new JPanel(new FlowLayout());
-        blocoVenda.add(new JLabel("ID Venda: "));
-        campoVenda.setEditable(false);
-        campoVenda.setColumns(7);
-        campoVenda.setText(venda);
-        blocoVenda.add(campoVenda);
-        blocoBottom.add(blocoVenda); // coluna 4;
-
+        
         // Botões da venda
         JButton botaoCancelar = new JButton("Cancelar Venda");
         botaoCancelar.addActionListener(
                 new ControllerCancelarVenda(this, produtos));
         blocoBotoesVenda.add(botaoCancelar);
+        
         JButton botaoFinalizar = new JButton("Finalizar");
         botaoFinalizar.addActionListener(
                 new ControllerFinalizarVenda(this, produtos, caixa, funcionario));
         blocoBotoesVenda.add(botaoFinalizar);
 
-        // Configurando a janela
-        this.pack();
-        this.setSize(800, 600);
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void limparInputs() {
@@ -218,17 +211,15 @@ public class ViewCaixa extends JFrame {
 
     public void limparVenda() {
         limparInputs();
+        
         while (produtos.getRowCount() != 0) { // Não pode usar o getRowCount no for porque a cada rodada ele diminui, logo o for não roda as N vezes que deveria rodar. 
 
             //System.out.println(produtos.getRowCount());
             produtos.removeRow(0); //não sei porque, mas é o unico que funciona direito
         }
+        
         campoTotal.setText("");
 
-    }
-
-    private void SpringLayout() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

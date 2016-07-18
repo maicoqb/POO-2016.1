@@ -1,11 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import javax.swing.table.DefaultTableModel;
-import lib.Helpers;
-import model.Produto;
 
 /**
  *
@@ -15,10 +11,29 @@ public class Venda {
 
     private ArrayList<Produto> produtos;
     private float valorVenda;
-    private String caixa;
-    private String funcionario;
+    private Caixa caixa;
+    private Funcionario funcionario;
     private Date data;
+    private final String tipoPagamento;
 
+    public Venda(
+            Caixa caixa, 
+            Funcionario funcionario, 
+            ArrayList<Produto> produtos, 
+            String tipoPagamento) {
+        this.caixa = caixa;
+        this.funcionario = funcionario;
+        this.produtos = produtos;
+        this.data = new Date();
+        this.tipoPagamento = tipoPagamento;
+        this.valorVenda = 0;
+        
+        for (Produto produto : produtos) {
+            this.valorVenda += produto.getValor() * produto.getQuantidade();
+        }
+
+    }
+    
     public ArrayList<Produto> getProdutos() {
         return produtos;
     }
@@ -27,11 +42,11 @@ public class Venda {
         return valorVenda;
     }
 
-    public String getCaixa() {
+    public Caixa getCaixa() {
         return caixa;
     }
 
-    public String getFuncionario() {
+    public Funcionario getFuncionario() {
         return funcionario;
     }
 
@@ -39,28 +54,8 @@ public class Venda {
         return data;
     }
 
-    public Venda(DefaultTableModel lista) {
-        this.produtos = new ArrayList<>();
-        this.valorVenda = 0;
-        Produto p;
-        String codigo;
-        String nome;
-        float valorProduto;
-        float quantidade;
-        String tipoQuantidade;
-        int linhas = lista.getRowCount();
-        for (int i = 0; i < linhas; i++) {
-            codigo = (String) lista.getValueAt(i, 1);
-            nome = (String) lista.getValueAt(i, 2);
-            valorProduto = Helpers.toFloat((String) lista.getValueAt(i, 3));
-            quantidade = Helpers.toFloat((String) lista.getValueAt(i, 4));
-            tipoQuantidade = (String) lista.getValueAt(i, 4);
-            this.valorVenda += valorProduto;
-            p = new Produto(codigo, nome, valorProduto, quantidade, tipoQuantidade);
-            produtos.add(p);
-        }
-//        Date now = new Date();
-//        this.data.setTime(now);
-        this.data = new Date();
+    public String getTipoPagamento() {
+        return tipoPagamento;
     }
+
 }

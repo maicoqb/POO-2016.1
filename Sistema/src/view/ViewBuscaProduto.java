@@ -49,7 +49,12 @@ public class ViewBuscaProduto extends JFrame {
         
         montaJanela();
         
+        // Configurando a janela
         this.setVisible(true);
+        this.pack();
+        this.setSize(800, 600);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void montaJanela() {
@@ -147,11 +152,6 @@ public class ViewBuscaProduto extends JFrame {
         painelPrincipal.setDividerLocation(200);
         this.setContentPane(painelPrincipal);
 
-        // Configurando a janela
-        this.pack();
-        this.setSize(800, 600);
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void exibeResultados(ArrayList<Produto> produtos) {

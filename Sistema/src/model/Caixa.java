@@ -1,15 +1,21 @@
 package model;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import java.util.UUID;
 
 /**
  *
  * @author User
  */
 public class Caixa {
-    
+
+    private String id;
+
+    public Caixa() {
+        this.id = UUID.randomUUID().toString().substring(1, 8);
+    }
+
+    @Override
+    public String toString() {
+        return "Caixa{" + id + '}';
+    }
 }

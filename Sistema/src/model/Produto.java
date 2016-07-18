@@ -1,5 +1,7 @@
 package model;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
 
 /*
@@ -11,7 +13,7 @@ import javax.swing.ComboBoxModel;
  *
  * @author User
  */
-public class Produto {
+public class Produto implements Cloneable {
 
     public static final String TIPO_QUILO = "Kg";
     public static final String TIPO_UNIDADE = "Un";
@@ -26,15 +28,16 @@ public class Produto {
     public Produto() {
         this.nome = "<Novo Produto>";
     }
-    public Produto(String codigo, String nome, Float valor, Float quantidade,String tipoQuantidade){
-        this.codigo=codigo;
-        this.nome=nome;
-        this.valor=valor;
-        this.quantidade=quantidade;
-        this.tipoQuantidade=tipoQuantidade;
-        this.descricao="";
+
+    public Produto(String codigo, String nome, Float valor, Float quantidade, String tipoQuantidade) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.valor = valor;
+        this.quantidade = quantidade;
+        this.tipoQuantidade = tipoQuantidade;
+        this.descricao = "";
     }
-    
+
     public String getCodigo() {
         return codigo;
     }
@@ -91,6 +94,15 @@ public class Produto {
     @Override
     public String toString() {
         return nome;
+    }
+
+    @Override
+    public Produto clone() {
+        try {
+            return (Produto) super.clone();
+        } catch (CloneNotSupportedException ex) {
+            return new Produto();
+        }
     }
 
 }
