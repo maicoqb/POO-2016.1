@@ -7,6 +7,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import view.ViewRelatorioVenda;
 
 /**
@@ -15,12 +17,15 @@ import view.ViewRelatorioVenda;
  */
 public class ControllerInicializaViewRelatorioVenda implements ActionListener {
 
-    public ControllerInicializaViewRelatorioVenda(){
+    public ControllerInicializaViewRelatorioVenda() {
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       ViewRelatorioVenda.abrirJanela();
+
+        ViewRelatorioVenda.abrirJanela();
+
     }
-    
+
 }

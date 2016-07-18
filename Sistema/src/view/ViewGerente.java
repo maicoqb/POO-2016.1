@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.ControllerInicializaViewCadastro;
 import controller.ControllerInicializaViewRelatorioEstoque;
 import controller.ControllerInicializaViewRelatorioVenda;
 import controller.ControllerInicializaViewRelatorioVenda;
@@ -18,6 +19,7 @@ import javax.swing.JPanel;
  * @author User
  */
 public class ViewGerente extends JFrame {
+
     
     
     public ViewGerente(){
@@ -34,7 +36,7 @@ public class ViewGerente extends JFrame {
         
        JPanel painelPrincipal = new JPanel(new GridLayout(1,3));
        JButton botaoCadastroProdutos = new JButton("Cadastro de Produtos");
-            botaoCadastroProdutos.addActionListener( new ControllerInicializaViewRelatorioVenda());
+            botaoCadastroProdutos.addActionListener( new ControllerInicializaViewCadastro());
        
        JButton botaoRelatorioVendas = new JButton("Relatorio de Vendas");
             botaoRelatorioVendas.addActionListener( new ControllerInicializaViewRelatorioVenda());
@@ -46,38 +48,9 @@ public class ViewGerente extends JFrame {
        painelPrincipal.add(botaoCadastroProdutos);
        painelPrincipal.add(botaoRelatorioVendas);
        painelPrincipal.add(botaoRelatorioEstoque);
-       
-       
-       
-       
-       
-       
-       
-       
-       
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  public static void abrirJanela() {
+       JFrame view = new ViewGerente();
+   }
 }

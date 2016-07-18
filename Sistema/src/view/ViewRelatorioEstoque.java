@@ -7,10 +7,7 @@ package view;
 
 import javax.swing.JFrame;
 
-/**
- *
- * @author User
- */
+
 public class ViewRelatorioEstoque extends JFrame {
     
     public ViewRelatorioEstoque(){
