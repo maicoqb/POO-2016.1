@@ -122,15 +122,7 @@ public class ViewBuscaProduto extends JFrame {
         campoValor.setEditable(false);
         blocoValor.add(campoValor, BorderLayout.CENTER);
         blocoProduto.add(blocoValor);
-
-        /*
-        JPanel blocoQuantidade = new JPanel(new BorderLayout());
-        blocoQuantidade.add(new JLabel("Quantidade:"), BorderLayout.NORTH);
-        campoQuantidade.setEnabled(false);
-        blocoQuantidade.add(campoQuantidade, BorderLayout.CENTER);
-        blocoProduto.add(blocoQuantidade);
-        */
-        
+       
         // Combobox Tipo Quantidade
         JPanel blocoTipoQuantidade = new JPanel(new BorderLayout());
         blocoTipoQuantidade.add(new JLabel("Tipo Quantidade:"), BorderLayout.NORTH);

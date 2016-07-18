@@ -5,11 +5,9 @@
  */
 package view;
 
+import controller.ControllerInicializaViewFuncionario;
 import controller.ControllerInicializaViewGerente;
-import controller.ControllerInicializaViewRelatorioEstoque;
-import controller.ControllerInicializaViewRelatorioVenda;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -45,7 +43,7 @@ JPasswordField campoSenha = new JPasswordField("");
         JButton botaoLoginGerente = new JButton("Gerente");
         botaoLoginGerente.addActionListener(new ControllerInicializaViewGerente(campoLogin,campoSenha));
         JButton botaoLoginFuncionario = new JButton("Funcionario");
-  //      botaoLoginFuncionario.addActionListener(new ControllerInicializaViewRelatorioVenda());
+        botaoLoginFuncionario.addActionListener(new ControllerInicializaViewFuncionario(campoLogin,campoSenha));
         JButton botaoBuscarProdutos = new JButton("Buscar Produtos");
   //      botaoBuscarProdutos.addActionListener(new ControllerInicializaViewRelatorioEstoque());
         

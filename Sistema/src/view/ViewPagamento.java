@@ -17,8 +17,6 @@ import javax.swing.JTextField;
 import model.Caixa;
 import model.Funcionario;
 import model.Produto;
-import model.Registro;
-import model.Venda;
 
 /**
  *

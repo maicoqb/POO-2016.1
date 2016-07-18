@@ -47,11 +47,11 @@ public class ViewCaixa extends JFrame {
     private final Caixa caixa;
     private final Funcionario funcionario;
 
-    public ViewCaixa() {
+    public ViewCaixa(int numFuncionario,int numCaixa) {
         super("Caixa");
 
-        caixa = new Caixa(1);
-        funcionario = new Funcionario(1);
+        caixa = new Caixa(numCaixa);
+        funcionario = new Funcionario(numFuncionario);
 
         montaJanela();
 
@@ -60,7 +60,7 @@ public class ViewCaixa extends JFrame {
         this.pack();
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void montaJanela() {
@@ -220,8 +220,8 @@ public class ViewCaixa extends JFrame {
         campoTotal.setText("");
 
     }
-    public static void abrirJanela() {
-       JFrame view = new ViewCaixa();
+    public static void abrirJanela(int numFuncionario,int numCaixa) {
+       JFrame view = new ViewCaixa(numFuncionario,numCaixa);
     }
 
 }

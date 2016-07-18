@@ -28,7 +28,7 @@ public class ControllerInicializaViewGerente implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (((campoLogin).getText().equals("admin")) && ((campoSenha).getText().equals("123"))) {
+        if (((this.campoLogin).getText().equals("admin")) && ((this.campoSenha).getText().equals("123"))) {
 
             ViewGerente.abrirJanela();
 

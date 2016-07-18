@@ -2,10 +2,6 @@ package model;
 
 import java.util.UUID;
 
-/**
- *
- * @author User
- */
 public class Caixa {
 
     private String id;
