@@ -29,6 +29,7 @@ JPasswordField campoSenha = new JPasswordField("");
         this.pack();
         this.setSize(500, 250);
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void montaJanela() {

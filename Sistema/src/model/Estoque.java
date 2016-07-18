@@ -21,9 +21,13 @@ public class Estoque {
 
     public static Estoque getInstancia() {
         if (instancia == null) {
-            instancia = new Estoque();
+            init();
         }
         return instancia;
+    }
+
+    public static void init() {
+        instancia = new Estoque();
     }
 
     public ArrayList<Produto> buscaProdutos(String nome) {
@@ -86,6 +90,17 @@ public class Estoque {
         }
     }
 
+    public Produto getProdutoByCodigo(String codigo) {
+
+        for (Produto produto : produtos) {
+            if (produto.getCodigo().equals(codigo)) {
+                return produto;
+            }
+        }
+
+        return null;
+    }
+
     public void seed() {
         String[] feira = {
             "Pêra", "Uva", "Maçã", "Banana", "Laranja", "Limão",
@@ -106,16 +121,5 @@ public class Estoque {
 
             this.produtos.add(produto);
         }
-    }
-
-    public Produto getProdutoByCodigo(String codigo) {
-        
-        for (Produto produto : produtos) {
-            if (produto.getCodigo().equals(codigo)) {
-                return produto;
-            }
-        }
-
-        return null;
     }
 }

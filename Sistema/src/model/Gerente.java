@@ -12,4 +12,8 @@ package model;
  */
 public class Gerente extends Funcionario {
     
+    public Gerente(int i) {
+        super(i);
+    }
+    
 }

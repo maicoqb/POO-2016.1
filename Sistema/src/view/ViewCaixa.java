@@ -12,7 +12,6 @@ import controller.ControllerCodigoQuantidadeCaixa;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.util.UUID;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -51,8 +50,8 @@ public class ViewCaixa extends JFrame {
     public ViewCaixa() {
         super("Caixa");
 
-        caixa = new Caixa();
-        funcionario = new Funcionario();
+        caixa = new Caixa(1);
+        funcionario = new Funcionario(1);
 
         montaJanela();
 

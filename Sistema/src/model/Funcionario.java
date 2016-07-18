@@ -12,12 +12,12 @@ public class Funcionario {
     private String senha;
     private String id;
 
-    public Funcionario() {
-        this.id = UUID.randomUUID().toString().substring(1, 8);
+    public Funcionario(int i) {
+        this.id = Integer.toString(i);
     }
 
     @Override
     public String toString() {
-        return "Funcionario{" + id + '}';
+        return "Funcionario " + id;
     }
 }

@@ -1,9 +1,9 @@
 package lib;
 
 import javax.swing.JFrame;
-import view.ViewBuscaProduto;
-import view.ViewCadastroProduto;
-import view.ViewCaixa;
+import model.Estoque;
+import model.Registro;
+
 import view.ViewGerente;
 import view.ViewInicial;
 import view.ViewRelatorioVenda;
@@ -18,7 +18,12 @@ public class Sistema {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        JFrame telagerente = new ViewInicial();
+
+        Estoque.init();
+        Registro.init();
+
+        JFrame telaGerente = new ViewInicial();
+
         // Iniciar 1 tela de estoque
         // Iniciar 3 telas de caixa
         // Iniciar 1 tela de busca de produto
