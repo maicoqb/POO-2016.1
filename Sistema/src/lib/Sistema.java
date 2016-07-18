@@ -27,7 +27,7 @@ public class Sistema {
 
         JFrame telaCaixa = new ViewCaixa();
 //
-        JFrame telaRelatorio = new ViewRelatorioVenda();
+     //   JFrame telaRelatorio = new ViewRelatorioVenda();
 //        JFrame telaCaixa2 = new ViewCaixa();
         // Inicia o Sistema
     }
