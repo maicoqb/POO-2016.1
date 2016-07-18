@@ -115,7 +115,7 @@ public class Estoque {
             produto.setCodigo(Integer.toString(i + 1));
             produto.setNome(feira[i]);
             produto.setValor(rand.nextFloat() * 10);
-            produto.setQuantidade((float) Math.abs(rand.nextInt() % 100));
+            produto.setQuantidade((float) Math.abs(rand.nextInt() % 100)); // já mudei aqui, não é o problema.
             produto.setTipoQuantidade(Produto.TIPO_QUILO);
             produto.setDescricao("");
 
