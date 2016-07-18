@@ -32,9 +32,7 @@ public class ViewRelatorioVenda extends JFrame {
 
     private final DefaultTableModel listaVendasModel = new DefaultTableModel();
     private final JTable tabela = new JTable(listaVendasModel);
-     
 
-    
     public ViewRelatorioVenda() {
         super("Relatório Venda");
         montaJanela();
@@ -45,13 +43,11 @@ public class ViewRelatorioVenda extends JFrame {
         JPanel painelPrincipal = new JPanel(new BorderLayout());
         JPanel painelTabela = new JPanel(new BorderLayout());
         painelPrincipal.add(painelTabela, BorderLayout.CENTER);
-        
-        
+
         //BLOCO TABELA
-        
         JScrollPane painelScrollTabela = new JScrollPane();
         painelScrollTabela.setViewportView(tabela);
-        
+
         painelTabela.setBorder(BorderFactory.createTitledBorder("Produtos"));
         listaVendasModel.addColumn("Caixa");
         listaVendasModel.addColumn("Funcionario");
@@ -59,35 +55,26 @@ public class ViewRelatorioVenda extends JFrame {
         listaVendasModel.addColumn("Data");
         painelTabela.add(painelScrollTabela, BorderLayout.CENTER);
         ArrayList<Venda> vendasArr = Registro.getInstancia().getVendas();
-       for(Venda v : vendasArr){
-           System.out.println("entrei");
-           listaVendasModel.addRow(
+        for (Venda v : vendasArr) {
+            System.out.println("entrei");
+            listaVendasModel.addRow(
                     new Object[]{
                         v.getCaixa(),
                         v.getFuncionario(),
                         v.getValorVenda(),
                         v.getData().toString()
                     });
-           
-       }
-  //  listaVendasModel.addRow(new Object[]{"caixa","Func","1.00","data"});
-        
-        
-        
-        
-        
-        
-        
-        
+
+        }
+        //  listaVendasModel.addRow(new Object[]{"caixa","Func","1.00","data"});
+
         this.pack();
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    
 
     public void limparVenda() {
-        
 
     }
 }
