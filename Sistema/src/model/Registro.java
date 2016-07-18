@@ -20,6 +20,9 @@ public class Registro {
         }
         return instancia;
     }
+    public void adicionarVenda(Venda venda){
+        vendas.add(venda);
+    }
 
     
 }

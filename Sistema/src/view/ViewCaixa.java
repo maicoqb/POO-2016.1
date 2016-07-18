@@ -5,12 +5,17 @@
  */
 package view;
 
+import java.util.Date;
+import controller.ControllerFinalizarVenda;
 import controller.ControllerCancelarVenda;
 import controller.ControllerAdicionarProdutoCaixa;
 import controller.ControllerCodigoQuantidadeCaixa;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.UUID;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -40,15 +45,17 @@ public class ViewCaixa extends JFrame {
     private final JTextField campoCaixa = new JTextField(); // vai mudar
     private final JTextField campoTotal = new JTextField();
     private final JTextField campoVenda = new JTextField();
+    private final JTextField campoData = new JTextField();
     private final String codigoCaixa;
     private final String codigoFuncionario;
     
+
     
     public ViewCaixa() {
         super("Caixa");
         
-        codigoCaixa = UUID.randomUUID().toString();
-        codigoFuncionario = UUID.randomUUID().toString();
+        codigoCaixa = UUID.randomUUID().toString().substring(1,8);
+        codigoFuncionario = UUID.randomUUID().toString().substring(1,8);
         
         montaJanela();
 
@@ -155,7 +162,7 @@ public class ViewCaixa extends JFrame {
         painelTabela.add(painelScrollTabela, BorderLayout.CENTER);
         
         //BLOCO BOTTOM
-        JPanel blocoBottom = new JPanel(new GridLayout()); //divide rodapé em 3 colunas
+        JPanel blocoBottom = new JPanel(new GridLayout(1,3)); //divide rodapé em 3 colunas
         painelTabela.add(blocoBottom, BorderLayout.SOUTH);
         blocoBottom.setSize(800, 50);
         
@@ -165,7 +172,7 @@ public class ViewCaixa extends JFrame {
         campoTotal.setEditable(false);
         campoTotal.setColumns(7); //seta largura em colunas do campo
         blocoTotal.add(campoTotal);
-        blocoBottom.add(blocoTotal,1.0); //coluna 1
+        blocoBottom.add(blocoTotal); //coluna 1
         
         //Bloco Funcionario
         JPanel blocoFuncionario = new JPanel(new FlowLayout());
@@ -173,7 +180,7 @@ public class ViewCaixa extends JFrame {
         campoFuncionario.setEditable(false);
         campoFuncionario.setColumns(7);
         blocoFuncionario.add(campoFuncionario);
-        blocoBottom.add(blocoFuncionario,2.0); //coluna 2
+        blocoBottom.add(blocoFuncionario); //coluna 2
         
         
         
@@ -183,17 +190,17 @@ public class ViewCaixa extends JFrame {
         campoCaixa.setEditable(false);
         campoCaixa.setColumns(7);
         blocoCaixa.add(campoCaixa);
-        blocoBottom.add(blocoCaixa,3.0); // coluna 3
+        blocoBottom.add(blocoCaixa); // coluna 3
         
         //BLOCO VENDA
         
         JPanel blocoVenda = new JPanel(new FlowLayout());
-        blocoVenda.add(new JLabel("ID Venda: "));
-        campoVenda.setEditable(false);
-        campoVenda.setColumns(7);
-        blocoVenda.add(campoVenda);
-        blocoBottom.add(blocoVenda,4.0); // coluna 4
-        campoVenda.setText(UUID.randomUUID().toString());
+        String idVenda = UUID.randomUUID().toString().substring(1,8);
+        blocoVenda.add(new JLabel("ID Venda: "+idVenda));
+        blocoBottom.add(blocoVenda); // coluna 4;
+        
+        
+                
         
         // Botões da venda
         JButton botaoCancelar = new JButton("Cancelar Venda");
@@ -201,6 +208,8 @@ public class ViewCaixa extends JFrame {
                 new ControllerCancelarVenda(this,produtos));
         blocoBotoesVenda.add(botaoCancelar);
         JButton botaoFinalizar = new JButton("Finalizar");
+         botaoFinalizar.addActionListener(
+                new ControllerFinalizarVenda(this,produtos,codigoCaixa,codigoFuncionario));
         blocoBotoesVenda.add(botaoFinalizar);
         
     

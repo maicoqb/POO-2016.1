@@ -26,7 +26,15 @@ public class Produto {
     public Produto() {
         this.nome = "<Novo Produto>";
     }
-
+    public Produto(String codigo, String nome, Float valor, Float quantidade,String tipoQuantidade){
+        this.codigo=codigo;
+        this.nome=nome;
+        this.valor=valor;
+        this.quantidade=quantidade;
+        this.tipoQuantidade=tipoQuantidade;
+        this.descricao="";
+    }
+    
     public String getCodigo() {
         return codigo;
     }
