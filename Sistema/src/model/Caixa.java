@@ -10,12 +10,12 @@ public class Caixa {
 
     private String id;
 
-    public Caixa() {
-        this.id = UUID.randomUUID().toString().substring(1, 8);
+    public Caixa(int i) {
+        this.id = Integer.toString(i);
     }
 
     @Override
     public String toString() {
-        return "Caixa{" + id + '}';
+        return "Caixa " + id;
     }
 }

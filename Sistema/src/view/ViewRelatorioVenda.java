@@ -64,7 +64,4 @@ public class ViewRelatorioVenda extends JFrame {
 
     }
 
-    public void limparVenda() {
-
-    }
 }

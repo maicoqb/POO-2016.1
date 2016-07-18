@@ -1,10 +1,11 @@
 package lib;
 
 import javax.swing.JFrame;
+import model.Estoque;
+import model.Registro;
 import view.ViewBuscaProduto;
 import view.ViewCadastroProduto;
 import view.ViewCaixa;
-import view.ViewRelatorioVenda;
 
 /**
  *
@@ -17,6 +18,9 @@ public class Sistema {
      */
     public static void main(String[] args) {
 
+        Estoque.init();
+        Registro.init();
+        
         // Iniciar 1 tela de estoque
         // Iniciar 3 telas de caixa
         // Iniciar 1 tela de busca de produto
