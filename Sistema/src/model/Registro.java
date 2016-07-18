@@ -24,5 +24,9 @@ public class Registro {
         vendas.add(venda);
     }
 
+    public ArrayList<Venda> getVendas() {
+        return vendas;
+    }
+
     
 }

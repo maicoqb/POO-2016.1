@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import view.ViewBuscaProduto;
 import view.ViewCadastroProduto;
 import view.ViewCaixa;
+import view.ViewRelatorioVenda;
 
 /**
  *
@@ -20,13 +21,14 @@ public class Sistema {
         // Iniciar 3 telas de caixa
         // Iniciar 1 tela de busca de produto
         // JFrame buscaDeProduto = new ViewBuscaProduto();
-        JFrame telaGerente = new ViewCadastroProduto();
-        
+       JFrame telaGerente = new ViewCadastroProduto();
+       
         JFrame telaBuscaProduto = new ViewBuscaProduto();
         
-        JFrame telaCaixa = new ViewCaixa();
-
-        JFrame telaCaixa2 = new ViewCaixa();
+       JFrame telaCaixa = new ViewCaixa();
+//
+        JFrame telaRelatorio = new ViewRelatorioVenda();
+//        JFrame telaCaixa2 = new ViewCaixa();
         // Inicia o Sistema
     }
 

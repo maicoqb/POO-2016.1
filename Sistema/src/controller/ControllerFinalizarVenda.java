@@ -8,10 +8,12 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import model.Registro;
 import model.Venda;
 import view.ViewCaixa;
+import view.ViewRelatorioVenda;
 
 /**
  *
@@ -37,7 +39,9 @@ public class ControllerFinalizarVenda implements ActionListener {
         Venda venda = new Venda(listaProdutos);
         Registro registro = Registro.getInstancia();
         registro.adicionarVenda(venda);
-        viewCaixa.limparVenda();    
+        viewCaixa.limparVenda();   
+        
+        JFrame telaRelatorio = new ViewRelatorioVenda();
     }
     
 }

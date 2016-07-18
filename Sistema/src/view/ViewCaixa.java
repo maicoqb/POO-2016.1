@@ -151,6 +151,7 @@ public class ViewCaixa extends JFrame {
         
         // painelScrollTabela.add(tabela);
         painelScrollTabela.setViewportView(tabela);
+        
         painelTabela.setBorder(BorderFactory.createTitledBorder("Produtos"));
         produtos.addColumn("Item");
         produtos.addColumn("Codigo");

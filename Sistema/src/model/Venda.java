@@ -19,6 +19,26 @@ public class Venda {
     private String funcionario;
     private Date data;
 
+    public ArrayList<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public float getValorVenda() {
+        return valorVenda;
+    }
+
+    public String getCaixa() {
+        return caixa;
+    }
+
+    public String getFuncionario() {
+        return funcionario;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
     public Venda(DefaultTableModel lista) {
         this.produtos = new ArrayList<>();
         this.valorVenda=0;
