@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.ControllerInicializaViewBuscaProduto;
 import controller.ControllerInicializaViewFuncionario;
 import controller.ControllerInicializaViewGerente;
 import java.awt.BorderLayout;
@@ -45,7 +46,7 @@ JPasswordField campoSenha = new JPasswordField("");
         JButton botaoLoginFuncionario = new JButton("Funcionario");
         botaoLoginFuncionario.addActionListener(new ControllerInicializaViewFuncionario(campoLogin,campoSenha));
         JButton botaoBuscarProdutos = new JButton("Buscar Produtos");
-  //      botaoBuscarProdutos.addActionListener(new ControllerInicializaViewRelatorioEstoque());
+        botaoBuscarProdutos.addActionListener(new ControllerInicializaViewBuscaProduto());
         
         
         //BLOCO LOGIN GERENTE

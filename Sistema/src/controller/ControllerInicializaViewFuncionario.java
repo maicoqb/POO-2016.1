@@ -52,7 +52,7 @@ public class ControllerInicializaViewFuncionario implements ActionListener {
             for (i = 0; i < caixaDisponivel.length; i++) {
                 if (caixaDisponivel[i]){
                     caixaDisponivel[i]=false;
-                    ViewCaixa.abrirJanela(loginNum, i);
+                    ViewCaixa.abrirJanela(loginNum, i+1);
                     return;
                 }
             }
