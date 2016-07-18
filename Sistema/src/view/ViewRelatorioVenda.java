@@ -45,7 +45,7 @@ public class ViewRelatorioVenda extends JFrame {
         JPanel painelPrincipal = new JPanel(new BorderLayout());
         JPanel painelTabela = new JPanel(new BorderLayout());
         painelPrincipal.add(painelTabela, BorderLayout.CENTER);
-        
+        this.setContentPane(painelPrincipal);
         
         //BLOCO TABELA
         
