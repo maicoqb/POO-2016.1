@@ -11,3 +11,6 @@ O sistema possui estoque de produtos com informações relevantes dos produtos.<
 O gerente pode emitir relatórios dos produtos, filtrando por funcionários ou caixas ou forma de pagamento.<br>
 O gerente pode cadastrar novos produtos além de poder editar ou remover produtos.<br>
 O sistema possui uma tela de busca, onde pode-se efetuar a busca por nome, ou código de barras.<br>
+<br>
+Grupo:<br>
+Gabriel Rodriguez<br>Maico Borges<br>Marcela Ramos<br>
