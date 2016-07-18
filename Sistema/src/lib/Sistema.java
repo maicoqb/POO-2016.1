@@ -3,14 +3,8 @@ package lib;
 import javax.swing.JFrame;
 import model.Estoque;
 import model.Registro;
-import view.ViewBuscaProduto;
-import view.ViewCadastroProduto;
-import view.ViewCaixa;
-<<<<<<< HEAD
-=======
+
 import view.ViewGerente;
-import view.ViewRelatorioVenda;
->>>>>>> d5ce29df45b01b582d95249a0fbbb5467998e8d8
 
 /**
  *

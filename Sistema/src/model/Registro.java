@@ -52,11 +52,11 @@ public class Registro {
         
         String[] tiposPagamento = {"dinheiro", "cartao"};
         
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             Caixa caixa = caixas[Helpers.randIntMinMax(0,3)];
-            Funcionario funcionario = funcionarios[Helpers.randIntMinMax(0,4)];
-            String tipoPagamento = tiposPagamento[Helpers.randIntMinMax(0, 1)];
-            
+            Funcionario funcionario = funcionarios[Helpers.randIntMinMax(0,5)];
+            String tipoPagamento = tiposPagamento[Helpers.randIntMinMax(0, 2)];
+
             ArrayList<Produto> produtos = new ArrayList<>();
             int x = Helpers.randIntMinMax(1, todosProdutos.size()-1);
             for(int j = 0; j < x; j++){
@@ -75,7 +75,9 @@ public class Registro {
                 p.setQuantidade(p.getQuantidade() - quantidade);
             }
             
-            new Venda(caixa, funcionario, produtos, tipoPagamento);
+            Venda venda = new Venda(caixa, funcionario, produtos, tipoPagamento);
+            this.adicionarVenda(venda);
+            
         }
     }
 }
