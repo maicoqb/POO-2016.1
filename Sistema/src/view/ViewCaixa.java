@@ -220,5 +220,8 @@ public class ViewCaixa extends JFrame {
         campoTotal.setText("");
 
     }
+    public static void abrirJanela() {
+       JFrame view = new ViewCaixa();
+    }
 
 }

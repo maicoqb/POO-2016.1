@@ -159,6 +159,8 @@ public class ViewBuscaProduto extends JFrame {
         // Exibe a JList
     }
     
-    
+    public static void abrirJanela() {
+       JFrame view = new ViewBuscaProduto();
+    }
     
 }

@@ -64,4 +64,8 @@ public class ViewRelatorioVenda extends JFrame {
 
     }
 
+    public static void abrirJanela() {
+       JFrame view = new ViewRelatorioVenda();
+    }
+
 }

@@ -29,6 +29,7 @@ import model.Produto;
 
 public class ViewCadastroProduto extends JFrame {
 
+
     private final DefaultListModel<Produto> produtos = new DefaultListModel();
     private final JList<Produto> listaProduto = new JList(produtos);
 
@@ -51,7 +52,6 @@ public class ViewCadastroProduto extends JFrame {
         this.pack();
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void montaJanela() {
@@ -135,4 +135,7 @@ public class ViewCadastroProduto extends JFrame {
 
     }
 
+    public static void abrirJanela() {
+       JFrame view = new ViewCadastroProduto();
+    }
 }
